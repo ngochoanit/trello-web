@@ -22,8 +22,7 @@ export const initalData = {
                         { id: 'card-4', boardId: 'board-1', columnId: 'column-1', title: 'Title of card 4', cover: null },
                         { id: 'card-5', boardId: 'board-1', columnId: 'column-1', title: 'Title of card 5', cover: null },
                         { id: 'card-6', boardId: 'board-1', columnId: 'column-1', title: 'Title of card 6', cover: null },
-                        { id: 'card-7', boardId: 'board-1', columnId: 'column-1', title: 'Title of card 7', cover: null },
-
+                        { id: 'card-7', boardId: 'board-1', columnId: 'column-1', title: 'Title of card 7', cover: null }
                     ]
                 },
                 {
@@ -34,8 +33,7 @@ export const initalData = {
                     cards: [
                         { id: 'card-8', boardId: 'board-1', columnId: 'column-2', title: 'Title of card 8', cover: null },
                         { id: 'card-9', boardId: 'board-1', columnId: 'column-2', title: 'Title of card 9', cover: null },
-                        { id: 'card-10', boardId: 'board-1', columnId: 'column-2', title: 'Title of card 10', cover: null },
-
+                        { id: 'card-10', boardId: 'board-1', columnId: 'column-2', title: 'Title of card 10', cover: null }
                     ]
                 },
                 {
@@ -47,11 +45,9 @@ export const initalData = {
                         { id: 'card-11', boardId: 'board-1', columnId: 'column-3', title: 'Title of card 11', cover: null },
                         { id: 'card-12', boardId: 'board-1', columnId: 'column-3', title: 'Title of card 12', cover: null },
                         { id: 'card-13', boardId: 'board-1', columnId: 'column-3', title: 'Title of card 13', cover: null },
-                        { id: 'card-14', boardId: 'board-1', columnId: 'column-3', title: 'Title of card 14', cover: null },
-
+                        { id: 'card-14', boardId: 'board-1', columnId: 'column-3', title: 'Title of card 14', cover: null }
                     ]
                 }
-
             ]
         }
     ]
