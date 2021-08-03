@@ -7,10 +7,12 @@ $board-content: calc(100vh - #{$navbar-app-height} - #{$navbar-board-height} - #
 $column-border-radius: 6px;
 
 //colors
-$app-main-text-color: #333;
+$app-main-text-color: #172b4d;
 $common-element-bg-color: rgba(255, 255, 255, 0.8);
 $bg-color: transparent;
 $while-color: #fff;
+$column-bg-color: #ebecf0;
+$alert-danger: #ee5253;
 
 //screens
 $screen-lg: 1201px;

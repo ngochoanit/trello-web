@@ -25,10 +25,10 @@
         margin: 5px 45px 5px 5px;
     }
     .add-new-column {
-        min-width: 300px;
-        height: 32px;
+        width: 300px;
+        max-width: 300px;
         line-height: 32px;
-        padding: 4px 0 4px 16px;
+        padding: 4px 10px;
         cursor: pointer;
         color: white;
         margin-left: $gap;
@@ -37,6 +37,31 @@
         border-radius: $column-border-radius;
         &:hover {
             background-color: rgba(255, 255, 255, 0.5);
+        }
+    }
+    .enter-new-column {
+        width: 300px;
+        max-width: 300px;
+        background-color: $column-bg-color;
+        line-height: 32px;
+        padding: 4px 10px;
+        margin-left: $gap;
+        margin-right: $gap;
+        border-radius: $column-border-radius;
+        input.input-enter-new-column {
+            margin: 5px 0px;
+        }
+    }
+    span.cancel-new-column {
+        margin-left: $gap;
+        cursor: pointer;
+
+        i {
+            font-size: 18px;
+            color: $alert-danger;
+            &:hover {
+                color: darken($alert-danger, 15);
+            }
         }
     }
 }
