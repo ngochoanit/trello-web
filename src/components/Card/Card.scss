@@ -1,9 +1,7 @@
 @import "_setting.scss";
-
 $card-border-radius: 4px;
-
 div.card-item {
-    cursor: pointer;
+    cursor: all-scroll;
     background-color: white;
     padding: $gap;
     border-radius: $card-border-radius;

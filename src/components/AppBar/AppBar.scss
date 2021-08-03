@@ -1,12 +1,13 @@
 // ==================== Navbar App ====================
 @import "_setting.scss";
 
-$appbar-bg-color: #0dc08e;
+$appbar-bg-color: $bg-color;
 .navbar-app {
+    background-color: rgba(0, 0, 0, 0.32);
+    color: $while-color;
     height: $navbar-app-height;
     padding-left: $gap;
     display: flex;
     align-items: center;
-    background: $appbar-bg-color;
     font-size: 1.5rem;
 }
