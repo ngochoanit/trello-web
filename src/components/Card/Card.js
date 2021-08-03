@@ -1,20 +1,24 @@
-import React from 'react';
-import PropTypes from 'prop-types';
+import React from 'react'
 import './Card.scss'
 
 Card.propTypes = {
 
-};
-
-function Card(props) {
-    const { card } = props;
-    card.cover && console.log(card.cover)
-    return (
-        <li className="card-item">
-            {card.cover && <img src={card.cover} className="card-cover" alt={card.title} />}
-            {card.title}
-        </li>
-    );
 }
 
-export default Card;
+function Card(props) {
+    const { card } = props
+    return (
+        <div className="card-item">
+            {card.cover &&
+                <img
+                    src={card.cover}
+                    className="card-cover"
+                    alt={card.title}
+                    onMouseDown={e => e.preventDefault()}
+                />}
+            {card.title}
+        </div>
+    )
+}
+
+export default Card

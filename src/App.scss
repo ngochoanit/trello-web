@@ -8,7 +8,8 @@ body {
 }
 .trello-web-app {
     height: 100vh;
-    display: grid;
-    grid-template-rows: 40px 50px 1fr;
     background-color: $board-bg-color;
+    // background: $board-bg-color; /* fallback for old browsers */
+    // background: -webkit-linear-gradient(to right, #aaffa9, $board-bg-color); /* Chrome 10-25, Safari 5.1-6 */
+    // background: linear-gradient(to right, #aaffa9, $board-bg-color);
 }

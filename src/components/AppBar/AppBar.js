@@ -1,15 +1,12 @@
-import React from 'react';
-import PropTypes from 'prop-types';
+import React from 'react'
 import './AppBar.scss'
 
-AppBar.propTypes = {
-
-};
+AppBar.propTypes = {}
 
 function AppBar(props) {
     return (
         <nav className="navbar-app">App Bar</nav>
-    );
+    )
 }
 
-export default AppBar;
+export default AppBar

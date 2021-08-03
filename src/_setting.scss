@@ -1,7 +1,9 @@
 @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap");
 
 $gap: 10px;
-
+$navbar-app-height: 6vh;
+$navbar-board-height: 8vh;
+$board-content: calc(100vh - #{$navbar-app-height} - #{$navbar-board-height} - #{$gap});
 //colors
 $board-bg-color: #11ffbd;
 $common-element-bg-color: rgba(255, 255, 255, 0.8);
