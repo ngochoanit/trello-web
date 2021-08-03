@@ -6,12 +6,11 @@ import './BoardContent.scss'
 
 import Column from 'components/Column/Column'
 import { mapOrder } from 'utilities/mapOrder'
+import { applyDrag } from 'utilities/drapDrop'
 
 import { initalData } from 'actions/initalData'
 
-BoardContent.propTypes = {
-
-}
+BoardContent.propTypes = {}
 
 function BoardContent(props) {
     const [board, setBoard] = useState({})
@@ -33,7 +32,21 @@ function BoardContent(props) {
         return (<div className='not-found' style={{ 'padding': '10px', 'background_color': 'while' }}>Board not found</div>)
     }
     const onColumnDrop = (dropResult) => {
-        console.log(dropResult)
+        let newColumns = [...columns]
+        newColumns = applyDrag(newColumns, dropResult)
+        let newBoard = { ...board }
+        newBoard.columnOrder = newColumns.map(c => c.id)
+        setColumns(newColumns)
+        // setBoard(newBoard)
+    }
+    const onCardDrop = (columnId, dropResult) => {
+        if (dropResult.addedIndex !== null || dropResult.removedIndex !== null) {
+            let newColumns = [...columns]
+            let currentColumn = newColumns.find(c => c.id === columnId)
+            currentColumn.cards = applyDrag(currentColumn.cards, dropResult)
+            currentColumn.cardOrder = currentColumn.cards.map(i => i.id)
+            setColumns(newColumns)
+        }
     }
     return (
         <div className="broad-content">
@@ -52,10 +65,13 @@ function BoardContent(props) {
             >
                 {columns.map((column, index) =>
                     <Draggable key={column.id} >
-                        <Column column={column}></Column>
+                        <Column column={column} onCardDrop={onCardDrop}></Column>
                     </Draggable>
                 )}
             </Container>
+            <div className='add-new-column'>
+                <i className="fa fa-plus icon" />Add another column
+            </div>
         </div>
     )
 }

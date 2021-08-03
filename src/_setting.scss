@@ -1,12 +1,16 @@
 @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap");
 
 $gap: 10px;
-$navbar-app-height: 6vh;
-$navbar-board-height: 8vh;
-$board-content: calc(100vh - #{$navbar-app-height} - #{$navbar-board-height} - #{$gap});
+$navbar-app-height: 10vh;
+$navbar-board-height: 10vh;
+$board-content: calc(100vh - #{$navbar-app-height} - #{$navbar-board-height} - #{$gap}* 2);
+$column-border-radius: 6px;
+
 //colors
-$board-bg-color: #11ffbd;
+$app-main-text-color: #333;
 $common-element-bg-color: rgba(255, 255, 255, 0.8);
+$bg-color: transparent;
+$while-color: #fff;
 
 //screens
 $screen-lg: 1201px;

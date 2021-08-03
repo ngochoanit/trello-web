@@ -3,9 +3,11 @@
 // ==================== Navbar Board ====================
 .navbar-board {
     height: $navbar-board-height;
+    margin-bottom: 10px;
     padding-left: $gap;
     display: flex;
     align-items: center;
-    background-color: $board-bg-color;
+    background-color: $bg-color;
+    color: $while-color;
     font-size: 1.1rem;
 }
