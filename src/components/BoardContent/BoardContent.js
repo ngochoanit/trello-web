@@ -19,6 +19,7 @@ function BoardContent(props) {
     const [opnenNewColumnForm, setOpnenNewColumnForm] = useState(false)
     const [newColumnTitle, setNewColumnTitle] = useState('')
 
+
     const newColumnInputRef = useRef(null)
 
     const onNewColumnTitleChange = useCallback((e) => { setNewColumnTitle(e.target.value) }, [])
@@ -44,14 +45,17 @@ function BoardContent(props) {
 
         return (<div className='not-found' style={{ 'padding': '10px', 'background_color': 'while' }}>Board not found</div>)
     }
+    //handle event drop column
     const onColumnDrop = (dropResult) => {
         let newColumns = [...columns]
         newColumns = applyDrag(newColumns, dropResult)
         let newBoard = { ...board }
         newBoard.columnOrder = newColumns.map(c => c.id)
+        newBoard.columns = newColumns
         setColumns(newColumns)
         setBoard(newBoard)
     }
+    //handle event drop card
     const onCardDrop = (columnId, dropResult) => {
         if (dropResult.addedIndex !== null || dropResult.removedIndex !== null) {
             let newColumns = [...columns]
@@ -61,7 +65,9 @@ function BoardContent(props) {
             setColumns(newColumns)
         }
     }
+    // handel show input title new column via state
     const toggleOpenNewColumnForm = () => { setOpnenNewColumnForm(!opnenNewColumnForm) }
+    // handel add new column
     const addNewColumn = (e) => {
         if (!newColumnTitle) {
             newColumnInputRef.current.focus()
@@ -84,6 +90,27 @@ function BoardContent(props) {
 
 
     }
+    // handel update column
+    const onUpdateColumn = (newColumnToUpdate) => {
+        const idColumnToUpdate = newColumnToUpdate.id
+        let newColumns = [...columns]
+        const indexColumnsToUpdate = newColumns.findIndex(c => c.id === idColumnToUpdate)
+        if (newColumnToUpdate._destroy) {
+            //remove column
+            newColumns.splice(indexColumnsToUpdate, 1)
+        }
+        else {
+            //update column
+            newColumns.splice(indexColumnsToUpdate, 1, newColumnToUpdate)
+        }
+        let newBoard = { ...board }
+        newBoard.columnOrder = newColumns.map(c => c.id)
+        newBoard.columns = newColumns
+        setColumns(newColumns)
+        setBoard(newBoard)
+
+
+    }
     return (
         <div className="broad-content">
             <Container
@@ -101,7 +128,7 @@ function BoardContent(props) {
             >
                 {columns.map((column, index) =>
                     <Draggable key={column.id} >
-                        <Column column={column} onCardDrop={onCardDrop}></Column>
+                        <Column column={column} onCardDrop={onCardDrop} onUpdateColumn={onUpdateColumn}></Column>
                     </Draggable>
                 )}
             </Container>
