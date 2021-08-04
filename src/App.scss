@@ -44,6 +44,21 @@ input[type="number"]:focus,
 .btn.focus,
 .btn:active.focus,
 .btn.active.focus {
-    outline: none;
-    box-shadow: none;
+    outline: none !important;
+    box-shadow: none !important;
+}
+.trallo-content-editable {
+    background-color: inherit;
+    border: none;
+    font-size: inherit;
+    cursor: pointer;
+    font-weight: inherit;
+    &:focus {
+        cursor: text;
+        background-color: $while-color;
+        border: 1px solid $input-border-color;
+    }
+    &:focus-visible {
+        border: 1px solid $input-border-color !important;
+    }
 }
