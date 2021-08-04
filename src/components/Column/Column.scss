@@ -50,7 +50,6 @@ $column-border-radius: 6px;
                 &.show {
                     min-width: 250px;
                     padding: 0;
-                    inset: 0px 0 auto auto !important;
                     .dropdown-item {
                         padding: 0.1rem 1rem;
                         font-size: 14px;
@@ -106,6 +105,16 @@ $column-border-radius: 6px;
             background-color: rgba(150, 150, 200, 0.1);
             border: 1px dashed #abc;
             margin: 5px;
+        }
+        .add-new-card-area {
+            margin-bottom: $gap;
+
+            .textarea-enter-new-card {
+                min-height: 54px;
+                max-height: 162px;
+
+                box-shadow: 0 1px 1px rgba(0, 0, 0, 0.1);
+            }
         }
     }
 }

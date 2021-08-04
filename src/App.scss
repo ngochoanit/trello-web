@@ -62,3 +62,15 @@ input[type="number"]:focus,
         border: 1px solid $input-border-color !important;
     }
 }
+span.cancel-icon {
+    margin-left: $gap;
+    cursor: pointer;
+
+    i.icon {
+        font-size: 18px;
+        color: $alert-danger;
+        &:hover {
+            color: darken($alert-danger, 15);
+        }
+    }
+}

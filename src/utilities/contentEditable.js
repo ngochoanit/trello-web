@@ -7,6 +7,5 @@ export const selectAllInlineText = (e) => {
 export const saveContentAfterPressEnter = (e) => {
     if (e.key === 'Enter') {
         e.target.blur()
-
     }
 }
