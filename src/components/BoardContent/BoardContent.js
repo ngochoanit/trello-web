@@ -1,4 +1,4 @@
-import React, { useCallback, useEffect, useRef, useState } from 'react'
+import React, { useEffect, useRef, useState } from 'react'
 import { Container, Draggable } from 'react-smooth-dnd'
 import { isEmpty } from 'lodash'
 
@@ -16,13 +16,14 @@ BoardContent.propTypes = {}
 function BoardContent(props) {
     const [board, setBoard] = useState({})
     const [columns, setColumns] = useState([])
+
     const [opnenNewColumnForm, setOpnenNewColumnForm] = useState(false)
+    // handel show input title new column via state
+    const toggleOpenNewColumnForm = () => { setOpnenNewColumnForm(!opnenNewColumnForm) }
+
     const [newColumnTitle, setNewColumnTitle] = useState('')
+    const onNewColumnTitleChange = (e) => { setNewColumnTitle(e.target.value) }
 
-
-    const newColumnInputRef = useRef(null)
-
-    const onNewColumnTitleChange = useCallback((e) => { setNewColumnTitle(e.target.value) }, [])
     useEffect(() => {
         //inital data for board
         const boardOfDB = initalData.board.find(board => board.id === 'board-1')
@@ -34,12 +35,14 @@ function BoardContent(props) {
         }
     }, [])
 
+    const newColumnInputRef = useRef(null)
     useEffect(() => {
         if (newColumnInputRef && newColumnInputRef.current) {
             newColumnInputRef.current.focus()
             newColumnInputRef.current.select()
         }
     }, [opnenNewColumnForm])
+
     // check board have data
     if (isEmpty(board)) {
 
@@ -65,8 +68,6 @@ function BoardContent(props) {
             setColumns(newColumns)
         }
     }
-    // handel show input title new column via state
-    const toggleOpenNewColumnForm = () => { setOpnenNewColumnForm(!opnenNewColumnForm) }
     // handel add new column
     const addNewColumn = (e) => {
         if (!newColumnTitle) {
@@ -87,8 +88,6 @@ function BoardContent(props) {
         setBoard(newBoard)
         setNewColumnTitle('')
         toggleOpenNewColumnForm()
-
-
     }
     // handel update column
     const onUpdateColumn = (newColumnToUpdate) => {
@@ -104,13 +103,13 @@ function BoardContent(props) {
             newColumns.splice(indexColumnsToUpdate, 1, newColumnToUpdate)
         }
         let newBoard = { ...board }
+
         newBoard.columnOrder = newColumns.map(c => c.id)
         newBoard.columns = newColumns
         setColumns(newColumns)
         setBoard(newBoard)
-
-
     }
+
     return (
         <div className="broad-content">
             <Container
@@ -128,7 +127,11 @@ function BoardContent(props) {
             >
                 {columns.map((column, index) =>
                     <Draggable key={column.id} >
-                        <Column column={column} onCardDrop={onCardDrop} onUpdateColumn={onUpdateColumn}></Column>
+                        <Column
+                            column={column}
+                            onCardDrop={onCardDrop}
+                            onUpdateColumn={onUpdateColumn}
+                        ></Column>
                     </Draggable>
                 )}
             </Container>
@@ -154,7 +157,7 @@ function BoardContent(props) {
                                 onKeyDown={(e) => (e.key === 'Enter') && addNewColumn()}
                             />
                             <Button size="sm" variant="success" onClick={addNewColumn}>Add new</Button>
-                            <span className='cancel-new-column' onClick={toggleOpenNewColumnForm}> <i className='fa fa-trash icon '></i></span>
+                            <span className='cancel-icon' onClick={toggleOpenNewColumnForm}> <i className='fa fa-trash icon '></i></span>
                         </Col>
                     </Row>
                 }
