@@ -31,7 +31,7 @@ export const initalData = {
                     title: 'Inprogress column',
                     cardOrder: ['card-8', 'card-9', 'card-10'],
                     cards: [
-                        { id: 'card-8', boardId: 'board-1', columnId: 'column-2', title: 'Title of card 8', cover: null },
+                        { id: 'card-8', boardId: 'board-1', columnId: 'column-2', title: 'Title of card 8', cover: 'https://scontent-hkg4-1.xx.fbcdn.net/v/t1.6435-9/196816976_1463335310686047_6682119345865312191_n.jpg?_nc_cat=102&ccb=1-3&_nc_sid=8bfeb9&_nc_ohc=QQHNyUN6_XYAX-f9vIf&tn=7HkHzx6x0E6T1kUT&_nc_ht=scontent-hkg4-1.xx&oh=047d9494c04d56315c1e130da85abc38&oe=61311335' },
                         { id: 'card-9', boardId: 'board-1', columnId: 'column-2', title: 'Title of card 9', cover: null },
                         { id: 'card-10', boardId: 'board-1', columnId: 'column-2', title: 'Title of card 10', cover: null }
                     ]
@@ -43,7 +43,7 @@ export const initalData = {
                     cardOrder: ['card-11', 'card-12', 'card-13', 'card-14'],
                     cards: [
                         { id: 'card-11', boardId: 'board-1', columnId: 'column-3', title: 'Title of card 11', cover: null },
-                        { id: 'card-12', boardId: 'board-1', columnId: 'column-3', title: 'Title of card 12', cover: null },
+                        { id: 'card-12', boardId: 'board-1', columnId: 'column-3', title: 'Title of card 12', cover: 'https://scontent-hkg4-2.xx.fbcdn.net/v/t1.6435-9/p843x403/137566685_2829182470660949_3684858736550647504_n.jpg?_nc_cat=111&ccb=1-3&_nc_sid=825194&_nc_ohc=gu4ngER_mhIAX_7zenz&_nc_ht=scontent-hkg4-2.xx&oh=0143d97291bfb52ea1d832a0c0c55fc4&oe=61314653' },
                         { id: 'card-13', boardId: 'board-1', columnId: 'column-3', title: 'Title of card 13', cover: null },
                         { id: 'card-14', boardId: 'board-1', columnId: 'column-3', title: 'Title of card 14', cover: null }
                     ]

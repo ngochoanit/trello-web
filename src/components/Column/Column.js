@@ -17,7 +17,7 @@ Column.propTypes = {
 function Column(props) {
 
     const { column, onCardDrop, onUpdateColumn } = props
-    const cards = mapOrder(column.cards, column.cardOrder, 'id')
+    const cards = mapOrder(column.cards, column.cardOrder, '_id')
 
     const [showConfirmModal, setShowConfirmModal] = useState(false)
     //handel show modal confirm edit column
@@ -66,14 +66,14 @@ function Column(props) {
         const newCardToAdd = {
             id: Math.random().toString(36).substr(2, 5),
             boardId: column.boardId,
-            columnId: column.id,
+            columnId: column._id,
             title: newCardTitle.trim(),
             cover: null
         }
         // let newColumn = { ...column }
         let newColumn = cloneDeep(column)
         newColumn.cards.push(newCardToAdd)
-        newColumn.cardOrder.push(newCardToAdd.id)
+        newColumn.cardOrder.push(newCardToAdd._id)
         onUpdateColumn(newColumn)
         setNewCardTitle('')
         setOpnenNewCardForm(false)
@@ -112,7 +112,7 @@ function Column(props) {
                 <Container
                     orientation="vertical"
                     groupName="card-group"
-                    onDrop={dropResult => onCardDrop(column.id, dropResult)}
+                    onDrop={dropResult => onCardDrop(column._id, dropResult)}
                     getChildPayload={index => cards[index]}
                     dragClass="card-ghost"
                     dropClass="card-ghost-drop"
@@ -124,7 +124,7 @@ function Column(props) {
                     dropPlaceholderAnimationDuration={200}
                 >
                     {cards.map((card, index) =>
-                        <Draggable key={card.id}>
+                        <Draggable key={card._id}>
                             <Card card={card}></Card>
                         </Draggable>
                     )}
