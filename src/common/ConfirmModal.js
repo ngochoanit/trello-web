@@ -1,5 +1,5 @@
 import React from 'react'
-import { MODAL_ACTION_CLOSE, MODAL_ACTION_CONFIRM } from 'utilities/contanst'
+import { MODAL_ACTION_CLOSE, MODAL_ACTION_CONFIRM } from 'utilities/constants'
 import { Button, Modal } from 'react-bootstrap'
 import HTMLReactParser from 'html-react-parser'
 ConfirmModal.propTypes = {
