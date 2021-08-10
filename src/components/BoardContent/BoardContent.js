@@ -1,7 +1,7 @@
 import React, { useEffect, useRef, useState } from 'react'
 import { Container, Draggable } from 'react-smooth-dnd'
 import { isEmpty } from 'lodash'
-import { fetchBoardDetails } from 'actions/ApiCall'
+import { fetchBoardDetails, createNewColumn } from 'actions/ApiCall'
 
 import './BoardContent.scss'
 
@@ -74,22 +74,22 @@ function BoardContent(props) {
             return
         }
         const newColumToAdd = {
-            id: Math.random().toString(36).substr(2, 5),
-            board: board._id,
-            title: newColumnTitle.trim(),
-            cardOrder: [],
-            cards: []
+            boardId: board._id,
+            title: newColumnTitle.trim()
         }
-        let newColumns = [...columns, newColumToAdd]
-        let newBoard = { ...board }
-        newBoard.columnOrder = newColumns.map(c => c._id)
-        setColumns(newColumns)
-        setBoard(newBoard)
-        setNewColumnTitle('')
-        toggleOpenNewColumnForm()
+        //call API
+        createNewColumn(newColumToAdd).then(column => {
+            let newColumns = [...columns, column]
+            let newBoard = { ...board }
+            newBoard.columnOrder = newColumns.map(c => c._id)
+            setColumns(newColumns)
+            setBoard(newBoard)
+            setNewColumnTitle('')
+            toggleOpenNewColumnForm()
+        })
     }
     // handel update column
-    const onUpdateColumn = (newColumnToUpdate) => {
+    const onUpdateColumnState = (newColumnToUpdate) => {
         const idColumnToUpdate = newColumnToUpdate._id
         let newColumns = [...columns]
         const indexColumnsToUpdate = newColumns.findIndex(c => c._id === idColumnToUpdate)
@@ -129,7 +129,7 @@ function BoardContent(props) {
                         <Column
                             column={column}
                             onCardDrop={onCardDrop}
-                            onUpdateColumn={onUpdateColumn}
+                            onUpdateColumnState={onUpdateColumnState}
                         ></Column>
                     </Draggable>
                 )}
