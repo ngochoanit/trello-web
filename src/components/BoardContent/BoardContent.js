@@ -17,9 +17,9 @@ function BoardContent(props) {
     const [board, setBoard] = useState({})
     const [columns, setColumns] = useState([])
 
-    const [opnenNewColumnForm, setOpnenNewColumnForm] = useState(false)
+    const [openNewColumnForm, setOpenNewColumnForm] = useState(false)
     // handel show input title new column via state
-    const toggleOpenNewColumnForm = () => { setOpnenNewColumnForm(!opnenNewColumnForm) }
+    const toggleOpenNewColumnForm = () => { setOpenNewColumnForm(!openNewColumnForm) }
 
     const [newColumnTitle, setNewColumnTitle] = useState('')
     const onNewColumnTitleChange = (e) => { setNewColumnTitle(e.target.value) }
@@ -40,7 +40,7 @@ function BoardContent(props) {
             newColumnInputRef.current.focus()
             newColumnInputRef.current.select()
         }
-    }, [opnenNewColumnForm])
+    }, [openNewColumnForm])
 
     // check board have data
     if (isEmpty(board)) {
@@ -124,7 +124,8 @@ function BoardContent(props) {
         }
         //call API
         createNewColumn(newColumToAdd).then(column => {
-            let newColumns = [cloneDeep(columns), column]
+            let newColumns = cloneDeep(columns)
+            newColumns.push(column)
             let newBoard = cloneDeep(board)
             newBoard.columnOrder = newColumns.map(c => c._id)
             setColumns(newColumns)
@@ -181,13 +182,13 @@ function BoardContent(props) {
             </Container>
             <BSContainer className='trello-container'>
                 {
-                    !opnenNewColumnForm &&
+                    !openNewColumnForm &&
                     <Row>
                         <Col className='add-new-column' onClick={toggleOpenNewColumnForm}><i className="fa fa-plus icon" />Add another column</Col>
                     </Row>
                 }
                 {
-                    opnenNewColumnForm &&
+                    openNewColumnForm &&
                     <Row>
                         <Col className='enter-new-column'>
                             <Form.Control
