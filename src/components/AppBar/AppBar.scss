@@ -3,11 +3,125 @@
 
 $appbar-bg-color: $bg-color;
 .navbar-app {
-    background-color: rgba(0, 0, 0, 0.32);
-    color: $while-color;
-    height: $navbar-app-height;
-    padding-left: $gap;
+    height:$navbar-board-height;
+    padding: 0 $gap;
     display: flex;
     align-items: center;
-    font-size: 1.5rem;
+    background-color: rgba(0, 0, 0, 0.32);
+    color: $while-color;
+    font-size: 16px;
+   
+    .trello-app-container{
+        max-width: 100%;
+
+        .app-action{
+            display: inline-flex;
+            height:100%;
+            width: 100%;flex-direction: row;
+            align-items: center;
+
+            div.item{
+                padding:10px 10px;
+                background-color: rgba(255,255,255, 0.3);
+                border-radius:3px;
+
+                &:not(:first-child){
+                    margin-left: 4px;
+                }
+                &:hover{
+                    cursor: pointer;
+                    background-color: rgba(255,255,255, 0.4);
+                }
+                &.home{
+                    i{
+                        font-size:20px;
+                    }
+                }
+                &.search{
+                    padding: 10px 0;
+                    .group-search{
+                        height:20px;
+                        .input-search{
+                            max-height: 100%;background-color:inherit;
+                            color: inherit;
+                            border: none;
+                            font-size:14px;
+                            &::placeholder{
+                                color: darken(aliceblue,5);
+                                opacity:1
+                            }}
+                        .input-icon-search{
+                            padding:0 8px 0 0;background-color:transparent;
+                            border:none;
+                            color: inherit
+                        }
+                    }
+                }
+            }
+        }
+        .app-branding{
+            cursor: pointer;
+            height:100%;
+            &:hover{
+                background-color:rgba(255,255,255, 0.1);
+            }
+            a{
+                color:inherit;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                height:100%;
+                &:hover{
+                    text-decoration:none;
+                    color: linghten(aliceblue,10);
+                }
+                img.top-logo{
+                    width:48px;
+                    display: block;
+                }
+                span.trello-app-slogan{
+                    display: block;
+                    font-size:16px;
+                    text-transform:uppercase;
+                    margin-left: 4px;
+                    font-weight:bold;
+                }
+            }
+        }
+        .user-action{
+            display: inline-flex;
+            height:100%;
+            width: 100%;
+            flex-direction: row;
+            align-items: center;
+            justify-content: flex-end;
+            div.item{
+                padding: 10px 10px;
+                background-color:rgba(255,255,255, 0.3);
+                border-radius:3px;
+                font-size: 16px;
+                &:not(:first-child)
+                {
+                    margin-left: 4px;
+                }
+                &:hover{
+                    cursor: pointer;
+                    background-color:rgba(255,255,255, 0.4);
+                }
+                &.user-avatar{
+                    padding: 0;
+                    background-color:transparent;
+                }
+                img{
+                    width: 32px;
+                    height: 32px;
+                    border-radius: 50%;
+                    object-fit: cover;
+                    &:hover{
+                        filter: brightness(120%);
+                    }
+                }
+            }
+        }
+    }
 }
